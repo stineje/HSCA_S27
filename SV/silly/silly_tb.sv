@@ -17,55 +17,51 @@ module tb ();
 	forever #10 clk = ~clk;
      end
 
-
    initial
-     begin
-    
+     begin    
 	#20  a = $random;	
 	#0   b = $random;	
 	#0   c = $random;
-
-	#20  a = $random;	
-	#0   b = $random;	
-	#0   c = $random;
-
-	#20  a = $random;	
-	#0   b = $random;	
-	#0   c = $random;	
-
-	#20  a = $random;	
-	#0   b = $random;	
-	#0   c = $random;	
-
-	#20  a = $random;	
-	#0   b = $random;	
-	#0   c = $random;	
-
-	#20  a = $random;	
-	#0   b = $random;	
-	#0   c = $random;	
-
-	#20  a = $random;	
-	#0   b = $random;	
-	#0   c = $random;	
-
-	#20  a = $random;	
-	#0   b = $random;	
-	#0   c = $random;	
-
-	#20  a = $random;	
-	#0   b = $random;	
-	#0   c = $random;	
-
-	#20  a = $random;	
-	#0   b = $random;	
-	#0   c = $random;	
-
-	#20  a = $random;	
-	#0   b = $random;	
-	#0   c = $random;		
 	
-     end
+	#20  a = $random;	
+	#0   b = $random;	
+	#0   c = $random;
 
+	#20  a = $random;	
+	#0   b = $random;	
+	#0   c = $random;	
+
+	#20  a = $random;	
+	#0   b = $random;	
+	#0   c = $random;	
+
+	#20  a = $random;	
+	#0   b = $random;	
+	#0   c = $random;	
+
+	#20  a = $random;	
+	#0   b = $random;	
+	#0   c = $random;	
+
+	#20  a = $random;	
+	#0   b = $random;	
+	#0   c = $random;	
+
+	#20  a = $random;	
+	#0   b = $random;	
+	#0   c = $random;	
+
+	#20  a = $random;	
+	#0   b = $random;	
+	#0   c = $random;	
+
+	#20  a = $random;	
+	#0   b = $random;	
+	#0   c = $random;	
+
+	#20  a = $random;	
+	#0   b = $random;	
+	#0   c = $random;			
+     end
    
 endmodule
