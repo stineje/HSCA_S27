@@ -1,0 +1,1 @@
+/opt/ModelSim/questasim/linux/VisualizerRls/bin/viscom -nolock -quiet -jmem_size 196800 work.stimulus -quiet -auto_acc_if_foreign -work work +acc -allow_unnamed -o _opt -id 1-000ae431a4f1-6a513e47-e2347-15357f +__betafsm

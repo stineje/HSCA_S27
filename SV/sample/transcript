@@ -1,0 +1,43 @@
+# //  Questa Sim
+# //  Version 2024.3_5 linux Jun 11 2026
+# //
+# // Unpublished work. Copyright 2026 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# do sample.do
+# QuestaSim vlog 2024.3_5 Compiler 2026.06 Jun 11 2026
+# Start time: 13:47:35 on Jul 10,2026
+# vlog -reportprogress 300 sample.sv tb_sample.sv 
+# -- Compiling module sample
+# -- Compiling module stimulus
+# 
+# Top level modules:
+# 	stimulus
+# End time: 13:47:35 on Jul 10,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs="+acc" work.stimulus 
+# Start time: 13:47:35 on Jul 10,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
+# Support of the MGLS_LICENSE_FILE and LM_LICENSE_FILE licensing environment variables will be discontinued starting with the 2025.1 release. Please update to using the SALT_LICENSE_SERVER variable.
+# Please contact Siemens EDA Customer Support (https://support.sw.siemens.com/) for assistance.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading sv_std.std
+# Loading work.stimulus(fast)
+# Loading work.sample(fast)
+# .main_pane.wave.interior.cs.body.pw.wf
+#         64 tests completed with          0 errors
+# ** Note: $finish    : tb_sample.sv(67)
+#    Time: 645 ns  Iteration: 2  Instance: /stimulus
+# 1
+# Break in Module stimulus at tb_sample.sv line 67
+# End time: 13:47:55 on Jul 10,2026, Elapsed time: 0:00:20
+# Errors: 0, Warnings: 1
