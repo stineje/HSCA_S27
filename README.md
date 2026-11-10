@@ -1,7 +1,7 @@
 # HSCA_S27 — High-Speed Computer Arithmetic, Spring 2027
 
 SystemVerilog designs, testbenches, generators, and reference material for
-High-Speed Computer Arithmetic at Oklahoma State University. Everything
+High-Speed Computer Arithmetic at the University of Nebraska-Lincoln. Everything
 here is meant to be simulated, synthesized, and measured, not just read.
 
 ## Contents
