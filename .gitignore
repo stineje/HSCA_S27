@@ -29,3 +29,16 @@ work/
 *.swp
 *.bak
 *.tmp
+
+# LaTeX build files
+*.aux
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+
+# Multiplier sweep output (make sweep)
+synth/build/
+synth/results.csv
+synth/results.png
+__pycache__/
