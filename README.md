@@ -184,7 +184,7 @@ Before the first arithmetic lab, try these in order:
 
 - **MIT Computation Structures** — Review logic gates, combinational and sequential circuits, and finite-state machines. Start with combinational logic before the first RTL lab and revisit sequential logic before the first pipelined design. [MIT OpenCourseWare](https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/)
 - **Logisim-evolution** — Build a full adder, chain four together, and toggle the inputs to see how carry propagates. [Logisim-evolution](https://github.com/logisim-evolution/logisim-evolution)
-- **MIT 6.004 Student Notes** — Use these notes as a reference for digital circuit design and timing. Review propagation delay before comparing adder designs. [MIT 6.004 student notes (PDF)](https://6191.mit.edu/_static/spring26/resources/references/6004_student_notes_FA20.pdf)
+- **MIT 6.004 — Circuit Timing and Pipelining.** Review propagation delay, latency, and throughput before comparing adder designs. [MIT OpenCourseWare reading (PDF)](https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/8b8d920345835709faf76ec95ccc2f84_56QUjMD3xoI.pdf)
 
 **Suggested pre-lab activity.** Build a 4-bit ripple-carry adder in Logisim-evolution and trace the carry path in the schematic. Then describe the same hardware in RTL using the [HDLBits 4-bit adder exercise](https://hdlbits.01xz.net/wiki/Adder).
 
