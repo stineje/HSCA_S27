@@ -168,8 +168,21 @@ and `removeDS.sh` do the same jobs as the `make` targets.
 | Verilator, Yosys | Free alternatives for simulation, linting, and error analysis |
 | Perl, Python 3, GCC | Generators, scripts, SoftFloat |
 
+## SystemVerilog Practice
+
+[HDLBits](https://hdlbits.01xz.net/wiki/Main_Page) provides short
+Verilog exercises with automatic feedback. The exercises reinforce
+RTL concepts we’ll use in SystemVerilog.
+
+Before the first arithmetic lab, try these in order:
+
+1. [Vectors](https://hdlbits.01xz.net/wiki/Vector0) — work with multi-bit signals.
+2. [Full adder](https://hdlbits.01xz.net/wiki/Fadd) — practice sum and carry logic.
+3. [4-bit binary adder](https://hdlbits.01xz.net/wiki/Adder) — connect full adders to build a ripple-carry adder.
+
 ## License
 
 See [LICENSE](LICENSE). Third-party material in `addins/`, `Xilinx/`,
 `papers/`, and `SV/DDCArv_HDL_Companion/` remains under its original
 authors' terms.
+
