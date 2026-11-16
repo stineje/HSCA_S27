@@ -1,0 +1,147 @@
+\documentclass[10pt,letterpaper,landscape]{article}
+\usepackage[margin=.48in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,xcolor,listings,hyperref}
+\definecolor{ink}{HTML}{17283C}
+\definecolor{teal}{HTML}{006B66}
+\definecolor{ice}{HTML}{ECF4F5}
+\hypersetup{colorlinks,urlcolor=teal}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3pt}
+\renewcommand{\familydefault}{\sfdefault}
+\lstset{basicstyle=\ttfamily\footnotesize,backgroundcolor=\color{ice},
+ keywordstyle=\bfseries\color{teal},commentstyle=\color{teal},
+ morecomment=[l]{//},morekeywords={module,endmodule,logic,input,output,parameter,
+ assign,always_comb,always_ff,begin,end,if,else,case,endcase,default,
+ typedef,enum,posedge,initial},columns=fullflexible,keepspaces=true,
+ showstringspaces=false,aboveskip=5pt,belowskip=5pt,xleftmargin=4pt}
+\newcommand{\topic}[1]{\par\medskip{\large\bfseries\color{teal}#1}\par}
+\begin{document}
+\color{ink}
+{\fontsize{28}{32}\selectfont\bfseries SystemVerilog Cheat Sheet}\hfill
+{\small DIGITAL DESIGN \textbar{} RISC-V EDITION}\par
+\vspace{3pt}{\color{teal}\hrule height 1.2pt}\vspace{8pt}
+\small
+\begin{minipage}[t]{.315\textwidth}
+\topic{Combinational logic}
+\begin{lstlisting}
+module mux2 #(parameter int W = 8) (
+  input logic [W-1:0] a, b,
+  input logic sel,
+  output logic [W-1:0] y
+);
+  assign y = sel ? b : a;
+endmodule
+\end{lstlisting}
+Use \verb|assign| for a continuous expression. Use blocking \verb|=| inside \verb|always_comb|.
+\begin{lstlisting}
+always_comb begin
+  y = '0;  // default on every path
+  if (en) y = a;
+end
+\end{lstlisting}
+An unassigned path can infer a latch. Give each RTL signal one driver.
+
+\topic{Bits and operators}
+\begin{lstlisting}
+8'hA5        // 8-bit hex literal
+'0           // fill with zeros
+a[7:4]       // select four bits
+{hi, lo}     // concatenate
+{4{sel}}     // replicate four times
+&a           // reduction AND
+a & b        // bitwise AND
+a && b       // logical AND
+\end{lstlisting}
+\verb|logic| has four states (0, 1, X, Z). Check truncation and mixed signedness. For \verb|>>>| to sign-fill, the left operand must be signed.
+
+\topic{Named port connections}
+\begin{lstlisting}
+mux2 #(.W(8)) u_mux (
+  .a(in0), .b(in1),
+  .sel(choose), .y(out)
+);
+\end{lstlisting}
+\end{minipage}\hfill
+\begin{minipage}[t]{.315\textwidth}
+\topic{Registers}
+\begin{lstlisting}
+always_ff @(posedge clk) begin
+  if (reset)   q <= '0;
+  else if (en) q <= d;
+end
+\end{lstlisting}
+Use nonblocking \verb|<=| for clocked state. With neither reset nor enable asserted, the register holds its value. This reset is synchronous. For an asynchronous active-high reset, use \verb|@(posedge clk or posedge reset)|.
+
+\topic{Finite state machines}
+\begin{lstlisting}
+typedef enum logic {IDLE, RUN} state_t;
+state_t state, next_state;
+
+always_ff @(posedge clk)
+  if (reset) state <= IDLE;
+  else       state <= next_state;
+
+always_comb begin
+  next_state = state;
+  case (state)
+    IDLE: if (start) next_state = RUN;
+    RUN:  if (done)  next_state = IDLE;
+    default:         next_state = IDLE;
+  endcase
+end
+
+assign busy = (state == RUN);
+\end{lstlisting}
+\textbf{Moore} outputs depend on state. \textbf{Mealy} outputs depend on state and inputs.
+
+\topic{Packed vs.\ unpacked}
+\begin{lstlisting}
+logic [7:0] mem [0:15];
+\end{lstlisting}
+The packed dimension gives each word 8 bits. The unpacked dimension gives 16 words. \verb|mem[3][7]| selects bit 7 of word 3.
+\end{minipage}\hfill
+\begin{minipage}[t]{.315\textwidth}
+\topic{Self-checking testbench}
+\begin{lstlisting}
+module mux2_tb;
+  timeunit 1ns;
+  timeprecision 1ps;
+  logic [7:0] a, b, y;
+  logic sel;
+
+  mux2 dut (.a(a), .b(b),
+            .sel(sel), .y(y));
+
+  initial begin
+    a = 8'h12;
+    b = 8'hA5;
+    sel = 1'b0;
+    #1;
+    if (y !== a) $fatal(1, "sel=0");
+
+    sel = 1'b1;
+    #1;
+    if (y !== b) $fatal(1, "sel=1");
+    $display("PASS");
+    $finish;
+  end
+endmodule
+\end{lstlisting}
+Use \verb|!==| to catch unexpected X or Z bits when the expected value is known. The delays and system tasks shown here are for simulation.
+
+\topic{Debugging checklist}
+\textbf{Unexpected X.} Check reset, unconnected inputs, and competing drivers.
+
+\textbf{Wrong width.} Check slices, literal sizes, and signedness before the operation.
+
+\textbf{Wrong cycle.} Drive synchronous stimulus away from the sampling edge. Check outputs after nonblocking updates settle.
+\end{minipage}
+
+\vfill
+{\color{teal}\hrule height .6pt}\vspace{4pt}
+{\footnotesize Based on Harris \& Harris,
+\href{https://pages.hmc.edu/harris/ddca/ddcarv.html}{\emph{Digital Design and Computer Architecture: RISC-V Edition}}.
+\hfill\href{https://pages.hmc.edu/harris/class/e85/DDCArv_Ch4.pdf}{Chapter 4 lecture slides}}
+\end{document}
