@@ -54,4 +54,4 @@
 \headcommand {\beamer@subsectionpages {1}{26}}
 \headcommand {\beamer@sectionpages {1}{26}}
 \headcommand {\beamer@documentpages {26}}
-\headcommand {\def \inserttotalframenumber {26}}
+\headcommand {\gdef \inserttotalframenumber {26}}
