@@ -1,9 +1,9 @@
 # Copyright 1991-2016 Mentor Graphics Corporation
 # 
-# Modification by Oklahoma State University
+# Modification by University of Nebraska-Lincoln
 # Use with Testbench 
 # James Stine, 2008
-# Go Cowboys!!!!!!
+# Go Big Red!!!!!!
 #
 # All Rights Reserved.
 #
